@@ -1,12 +1,9 @@
+from sympy import isprime
 from typing import Any, Callable, Union
-
-from sympy.multipledispatch.dispatcher import RaiseNotImplementedError
 from numberphile_common_tools.miller_rabin_test import StarWitnessesInterface
-
 from numberphile_common_tools.miller_rabin_test.witness_test import naive_witness_test
 from numberphile_common_tools.miller_rabin_test import list_of_star_witnesses
 from numberphile_common_tools.miller_rabin_test import SmallestPossible
-from sympy import isprime
 
 
 class PrimeDetector:
@@ -23,7 +20,7 @@ class PrimeDetector:
         for witness_group in self.witness_groups:
             if n < witness_group.upper_bound:
                 return witness_group
-        raise RaiseNotImplementedError
+        raise NotImplementedError
 
     def prime_determination(
         self, n: int, witness_group: StarWitnessesInterface = SmallestPossible()
