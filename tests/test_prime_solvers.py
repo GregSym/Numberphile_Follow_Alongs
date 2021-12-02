@@ -1,13 +1,25 @@
 from numberphile_common_tools.miller_rabin_test import _PrimeDetectorInterface
 from numberphile_common_tools.sequence_generators import gen_primes
 from numberphile_common_tools.sequence_generators import odd_generator
+import pytest
+from numberphile_common_tools.miller_rabin_test import PrimeDetector
+from numberphile_common_tools.miller_rabin_test import PrimeDetectorSympy
 
 
+prime_detectors: list[tuple[_PrimeDetectorInterface, int, int, bool]] = [
+    (PrimeDetector(), 4, 100, False), (PrimeDetectorSympy(), 4, 100, False)
+]
+
+
+@pytest.mark.parametrize(
+    ["prime_checker", "test_start", "test_range", "verbose"],
+    prime_detectors,
+)
 def test_prime_detection(
     prime_checker: _PrimeDetectorInterface,
-    test_start: int = 4,
-    test_range: int = 100,
-    verbose: bool = False,
+    test_start: int,
+    test_range: int,
+    verbose: bool,
 ):
     primes_gen = gen_primes()
     primes = [next(primes_gen) for _ in range(test_range)]
@@ -32,6 +44,10 @@ def test_prime_detection(
             ), f"A number, {number},  was declared composite that can be found in test primes"
 
 
+@pytest.mark.parametrize(
+    ["prime_checker", "n"],
+    [(PrimeDetector(), n) for n in odd_generator(4, 100)],
+)
 def test_individual_prime_detection(prime_checker: _PrimeDetectorInterface, n: int):
     """lighter weight, individual prime test
     test is bounded by: n < 2^64

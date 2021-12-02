@@ -11,7 +11,7 @@ class PrimeDetector:
         StarWitnessesInterface
     ] = list_of_star_witnesses  # let's just borrow that from above
 
-    miller_rabin_rule: Callable[...] = lambda self, n: n > 2 and n % 2 == 1
+    miller_rabin_rule: Callable[..., bool] = lambda self, n: n > 2 and n % 2 == 1
 
     def witness_group_factory(self, n: int) -> StarWitnessesInterface:
         """factory for returning appropriate witness groups"""
@@ -38,3 +38,17 @@ class PrimeDetector:
                 for witness_number in witness_group.star_witnesses
             ]
         )
+
+
+from sympy import isprime
+
+
+class PrimeDetectorSympy:
+    """Wraps sympy prime verification to match interface so it can plug in as an alternative checker
+    when mine gets too slow at higher ranges
+    """
+
+    def prime_determination(
+        self, n: int, witness_group: StarWitnessesInterface = SmallestPossible()
+    ) -> bool:
+        return isprime(n)
