@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from numberphile_common_tools.miller_rabin_test import StarWitnessesInterface
 
 

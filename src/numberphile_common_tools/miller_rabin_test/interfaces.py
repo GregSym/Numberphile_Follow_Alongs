@@ -29,7 +29,7 @@ class _PrimeDetectorInterface(Protocol):
 
 
 class _VisualisationInterface(Protocol):
-    def __call__(map_of_liars_to_count: dict[int, int], verbose: bool = False) -> None:
+    def __call__(self, map_of_liars_to_count: dict[int, int], verbose: bool = False) -> None:
         ...
 
     """ defines the function that takes the sorted dict object and visualises the data """

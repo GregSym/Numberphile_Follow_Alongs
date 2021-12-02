@@ -1,9 +1,12 @@
-from typing import Callable
+from typing import Any, Callable, Union
+
+from sympy.multipledispatch.dispatcher import RaiseNotImplementedError
 from numberphile_common_tools.miller_rabin_test import StarWitnessesInterface
 
 from numberphile_common_tools.miller_rabin_test.witness_test import naive_witness_test
 from numberphile_common_tools.miller_rabin_test import list_of_star_witnesses
 from numberphile_common_tools.miller_rabin_test import SmallestPossible
+from sympy import isprime
 
 
 class PrimeDetector:
@@ -11,13 +14,16 @@ class PrimeDetector:
         StarWitnessesInterface
     ] = list_of_star_witnesses  # let's just borrow that from above
 
-    miller_rabin_rule: Callable[..., bool] = lambda self, n: n > 2 and n % 2 == 1
+    miller_rabin_rule: Callable[..., Union[bool, Any]] = (
+        lambda self, n: n > 2 and n % 2 == 1
+    )
 
     def witness_group_factory(self, n: int) -> StarWitnessesInterface:
         """factory for returning appropriate witness groups"""
         for witness_group in self.witness_groups:
             if n < witness_group.upper_bound:
                 return witness_group
+        raise RaiseNotImplementedError
 
     def prime_determination(
         self, n: int, witness_group: StarWitnessesInterface = SmallestPossible()
@@ -40,9 +46,6 @@ class PrimeDetector:
         )
 
 
-from sympy import isprime
-
-
 class PrimeDetectorSympy:
     """Wraps sympy prime verification to match interface so it can plug in as an alternative checker
     when mine gets too slow at higher ranges
@@ -51,4 +54,5 @@ class PrimeDetectorSympy:
     def prime_determination(
         self, n: int, witness_group: StarWitnessesInterface = SmallestPossible()
     ) -> bool:
-        return isprime(n)
+        is_prime: bool = isprime(n)
+        return is_prime

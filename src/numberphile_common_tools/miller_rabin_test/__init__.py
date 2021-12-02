@@ -8,7 +8,7 @@ from .prime_checkers import PrimeDetectorSympy
 
 
 __all__ = [
-    "StarWitnessInterface",
+    "StarWitnessesInterface",
     "_PrimeDetectorInterface",
     "_VisualisationInterface",
     "list_of_star_witnesses",
