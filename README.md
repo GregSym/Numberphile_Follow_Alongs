@@ -28,3 +28,14 @@ return “probably prime”
 ```
 
 and find the values of a for which the test produces the most false positives. The solution implemented in the notebook is a simple brute force solution that runs to whatever number your RAM and time will allow it to run to.
+
+## Hitomezashi Stitch Patterns
+
+https://www.youtube.com/watch?v=JbfhzlMk2eY
+<p>
+description: Ayliean MacDonald discusses Hitomezashi Stitch Patterns.
+</p>
+
+A pattern generated from a 2d binary structure.
+
+In the video it is declared a '2 colourable pattern', for which the included notebook implements an incredibly naive proof.
