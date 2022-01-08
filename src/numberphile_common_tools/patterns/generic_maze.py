@@ -132,7 +132,7 @@ class Maze:
         return cls(maze_cells=maze_cells)
 
     @property
-    def colour_map(self) -> npt.NDArray[np.float16]:
+    def colour_map(self) -> npt.NDArray[np.float64]:
         # init numpy.ndarray of correct shape
         _colour_map = np.zeros((len(self.maze_cells), len(self.maze_cells)))
 
