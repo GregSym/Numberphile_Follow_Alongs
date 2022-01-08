@@ -2,6 +2,7 @@ from .hitomezashi_stitch_pattern import HitomezashiRepr
 from .hitomezashi_stitch_pattern import _VisualiserInterfaceHitomezashi
 from .hitomezashi_stitch_pattern import visualise_hitomezashi_pattern
 from .comparisons import _StrComparablePattern
+from .comparisons import _ComparableStructureForGridPattern
 from .generic_maze import Maze
 
 __all__ = [
@@ -9,5 +10,6 @@ __all__ = [
     "visualise_hitomezashi_pattern",
     "_VisualiserInterfaceHitomezashi",
     "_StrComparablePattern",
+    "_ComparableStructureForGridPattern",
     "Maze",
 ]
