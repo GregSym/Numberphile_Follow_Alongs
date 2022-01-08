@@ -15,3 +15,9 @@ class _StrComparablePattern(Protocol):
         """
         returns a kind of str repr of the pattern for comparison to other datastructures of the same pattern
         """
+
+
+class _ComparableStructureForGridPattern(Protocol):
+    @property
+    def str_pattern(self) -> _StrComparablePattern:
+        """Any datastructure for a grid pattern that implements a str repr should have this"""
