@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 import numpy as np
+import numpy.typing as npt
 from numberphile_common_tools.patterns import hitomezashi_stitch_pattern as hsp
 
 
@@ -22,6 +23,8 @@ class MazeCell:
     walls: MazeWalls
 
     def __eq__(self, other) -> bool:
+        if not isinstance(other, MazeCell):
+            return False
         return other.index[0] == self.index[0] and other.index[1] == self.index[1]
 
 
@@ -129,7 +132,7 @@ class Maze:
         return cls(maze_cells=maze_cells)
 
     @property
-    def colour_map(self) -> np.ndarray:
+    def colour_map(self) -> npt.NDArray[np.float16]:
         # init numpy.ndarray of correct shape
         _colour_map = np.zeros((len(self.maze_cells), len(self.maze_cells)))
 
