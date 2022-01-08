@@ -1,5 +1,4 @@
 import sys
-from typing import Any
 
 if float(f"{sys.version_info[0]}.{sys.version_info[1]}") >= 3.8:
     from typing import Protocol
@@ -21,4 +20,3 @@ class _ComparableStructureForGridPattern(Protocol):
     @property
     def str_pattern(self) -> _StrComparablePattern:
         """Any datastructure for a grid pattern that implements a str repr should have this"""
-
