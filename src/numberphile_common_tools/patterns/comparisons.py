@@ -11,7 +11,7 @@ else:
 
 
 class _StrComparablePattern(Protocol):
-    def __call__(self, *args: Any, **kwds: Any) -> str:
+    def __call__(self) -> str:
         """
         returns a kind of str repr of the pattern for comparison to other datastructures of the same pattern
         """
@@ -21,3 +21,4 @@ class _ComparableStructureForGridPattern(Protocol):
     @property
     def str_pattern(self) -> _StrComparablePattern:
         """Any datastructure for a grid pattern that implements a str repr should have this"""
+
