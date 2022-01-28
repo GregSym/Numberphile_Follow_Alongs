@@ -39,3 +39,11 @@ description: Ayliean MacDonald discusses Hitomezashi Stitch Patterns.
 A pattern generated from a 2d binary structure.
 
 In the video it is declared a '2 colourable pattern', for which the included notebook implements an incredibly naive proof.
+
+## Stones on an Infinite Chessboard
+
+https://www.youtube.com/watch?v=m4Uth-EaTZ8
+
+A problem that involves setting up a number of numbered stones for an initial state and then counting sequentially as high as possible by summing up valid cells neighbouring values.
+
+(currently incomplete)
