@@ -46,4 +46,6 @@ https://www.youtube.com/watch?v=m4Uth-EaTZ8
 
 A problem that involves setting up a number of numbered stones for an initial state and then counting sequentially as high as possible by summing up valid cells neighbouring values.
 
+An interactive javascript implementation of the game the challenge is based around: https://gregsym.github.io/infinite-chessboard/ 
+
 (currently incomplete)
